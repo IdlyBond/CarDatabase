@@ -20,12 +20,16 @@ public class CarCollector {
         carsList.removeIf(v -> v.getVinCode().equals(vin));
     }
 
-    public Set<Car> search(final String var, Fields field){
-        return searcher.find(var, field);
+    public Set<Car> search(final String var, Fields field) throws CarNotFoundException{
+        Set<Car> set = searcher.find(var, field);
+        if (set.isEmpty()) throw new CarNotFoundException(Lines.NO_CARS_FOUND.toString());
+        return set;
     }
 
-    public Set<Car> search(final Integer from, final Integer to, Fields field) {
-        return searcher.find(from, to, field);
+    public Set<Car> search(final Integer from, final Integer to, Fields field) throws CarNotFoundException{
+        Set<Car> set = searcher.find(from, to, field);
+        if (set.isEmpty()) throw new CarNotFoundException(Lines.NO_CARS_FOUND.toString());
+        return set;
     }
 
     @Override
