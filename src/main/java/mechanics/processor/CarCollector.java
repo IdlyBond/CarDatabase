@@ -1,6 +1,6 @@
-package processor;
+package mechanics.processor;
 
-import cars.Car;
+import mechanics.exceptions.CarNotFoundException;
 import constants.Fields;
 import constants.Lines;
 
@@ -20,7 +20,7 @@ public class CarCollector {
         carsList.removeIf(v -> v.getVinCode().equals(vin));
     }
 
-    public Set<Car> search(final String var, Fields field) throws CarNotFoundException{
+    public Set<Car> search(final String var, Fields field) throws CarNotFoundException {
         Set<Car> set = searcher.find(var, field);
         if (set.isEmpty()) throw new CarNotFoundException(Lines.NO_CARS_FOUND.toString());
         return set;
@@ -30,13 +30,6 @@ public class CarCollector {
         Set<Car> set = searcher.find(from, to, field);
         if (set.isEmpty()) throw new CarNotFoundException(Lines.NO_CARS_FOUND.toString());
         return set;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder line = new StringBuilder("Все машины:\n");
-        carsList.forEach((v -> line.append("* \n").append(v).append("\n")));
-        return line.toString();
     }
 
     public CarCollector() {
@@ -53,5 +46,12 @@ public class CarCollector {
         this.carsList.add(car2);
         this.carsList.add(car3);
         this.carsList.add(car4);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder line = new StringBuilder("Все машины:\n");
+        carsList.forEach((v -> line.append("* \n").append(v).append("\n")));
+        return line.toString();
     }
 }

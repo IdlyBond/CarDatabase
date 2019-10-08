@@ -1,8 +1,7 @@
-package processor;
+package mechanics.processor;
 
-import cars.Car;
 import constants.Fields;
-import cars.InvalidInputException;
+import mechanics.exceptions.InvalidInputException;
 import utillities.Checker;
 
 import java.util.Collections;

@@ -1,9 +1,9 @@
-import cars.Car;
-import cars.Changer;
+import mechanics.processor.Car;
+import mechanics.processor.Changer;
 import constants.Fields;
 import constants.Lines;
-import processor.CarCollector;
-import processor.CarNotFoundException;
+import mechanics.processor.CarCollector;
+import mechanics.exceptions.CarNotFoundException;
 import utillities.Checker;
 import utillities.Utils;
 

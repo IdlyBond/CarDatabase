@@ -1,4 +1,4 @@
-package cars;
+package mechanics.exceptions;
 
 import constants.Fields;
 

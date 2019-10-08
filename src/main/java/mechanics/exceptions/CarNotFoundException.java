@@ -1,4 +1,4 @@
-package processor;
+package mechanics.exceptions;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-import cars.InvalidInputException;
+import mechanics.exceptions.InvalidInputException;
 import constants.Fields;
 import constants.Lines;
 import utillities.Checker;

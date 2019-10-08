@@ -1,7 +1,8 @@
-package cars;
+package mechanics.processor;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import mechanics.exceptions.InvalidInputException;
 import utillities.Checker;
 import constants.Fields;
 
@@ -17,7 +18,7 @@ public class Car {
     private int year;
     private int price;
 
-    public Car(String vinCode, String regNumber, String model, int path, int year, int price) {
+    protected Car(String vinCode, String regNumber, String model, int path, int year, int price) {
         setVinCode(vinCode);
         setRegNumber(regNumber);
         setModel(model);
