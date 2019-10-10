@@ -3,9 +3,7 @@ package gui;
 import gui.input.EnterFields;
 import gui.input.Printer;
 import mechanics.exceptions.CarNotFoundException;
-import mechanics.processor.Car;
 import mechanics.processor.CarDatabase;
-import utillities.Checker;
 
 
 public class Menu {
@@ -15,6 +13,7 @@ public class Menu {
     private EnterFields enter;
     private FindGUI findGUI;
     private DeleteGUI deleteGUI;
+    private ChangerGUI changerGUI;
 
     public Menu(CarDatabase carDatabase) {
         this.carDatabase = carDatabase;
@@ -22,6 +21,7 @@ public class Menu {
         this.enter = new EnterFields(print);
         this.findGUI = new FindGUI(carDatabase, enter);
         this.deleteGUI = new DeleteGUI(carDatabase, enter);
+        this.changerGUI = new ChangerGUI(carDatabase, enter, findGUI);
     }
 
     public Menu() {
@@ -44,7 +44,7 @@ public class Menu {
                     add();
                     break;
                 case 3:
-                    change();
+                    changeMenu();
                     break;
                 case 4:
                     deleteMenu();
@@ -121,62 +121,40 @@ public class Menu {
         }
     }
 
-    private void add() {
-        carDatabase.add(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
-    }
-
-    private void printCars() {
-        if (carDatabase.isEmpty()) {
-            System.out.println(Lines.NO_CARS_FOUND);
-            return;
-        }
-        System.out.println(carDatabase);
-    }
-
-
-    private void change() {
+    private void changeMenu() {
         while (true) {
-            System.out.println(Lines.ZERO_TO_EXIT);
-            String vin = enter.vin();
-            if (Checker.isZero(vin)) return;
-            Car car;
-            try {
-                car = carDatabase.searchByVin(vin).iterator().next();
-            } catch (CarNotFoundException e) {
-                System.out.println(Lines.NO_CARS_FOUND);
-                continue;
-            }
-            System.out.println(Lines.WHAT_TO_CHANGE);
-            System.out.println(Lines.CHANGE_OPTIONS);
-            switch (print.numberFromTo(1, 7)) {
+            System.out.println(Lines.CHOOSE_LINE);
+            System.out.println(Lines.CHANGE_OPTIONS_LINE);
+            switch (print.numberFromTo(0, 7)) {
                 case 1:
-                    car.setVinCode(enter.vin());
+                    changeVin();
                     break;
                 case 2:
-                    car.setRegNumber(enter.reg());
+                    changeReg();
                     break;
                 case 3:
-                    car.setModel(enter.model());
+                    changeModel();
                     break;
                 case 4:
-                    car.setPath(enter.path());
+                    changePath();
                     break;
                 case 5:
-                    car.setYear(enter.year());
+                    changeYear();
                     break;
                 case 6:
-                    car.setPrice(enter.price());
+                    changePrice();
                     break;
                 case 7:
-                    car.setVinCode(enter.vin());
-                    car.setRegNumber(enter.reg());
-                    car.setModel(enter.model());
-                    car.setPath(enter.path());
-                    car.setYear(enter.year());
-                    car.setPrice(enter.price());
+                    changeAll();
                     break;
+                case 0:
+                    return;
             }
         }
+    }
+
+    private void add() {
+        carDatabase.add(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
     }
 
     private void deleteByVin() {
@@ -216,6 +194,34 @@ public class Menu {
                 }
                 break;
         }
+    }
+
+    private void changeVin(){
+        changerGUI.changeVin();
+    }
+
+    private void changeReg(){
+        changerGUI.changeReg();
+    }
+
+    private void changeModel(){
+        changerGUI.changeModel();
+    }
+
+    private void changePath(){
+        changerGUI.changePath();
+    }
+
+    private void changeYear(){
+        changerGUI.changeYear();
+    }
+
+    private void changePrice(){
+        changerGUI.changePrice();
+    }
+
+    private void changeAll(){
+        changerGUI.changeAll();
     }
 
     private void printByVin() {
@@ -264,6 +270,14 @@ public class Menu {
         } catch (CarNotFoundException e) {
             System.out.println(Lines.NO_CARS_FOUND);
         }
+    }
+
+    private void printCars() {
+        if (carDatabase.isEmpty()) {
+            System.out.println(Lines.NO_CARS_FOUND);
+            return;
+        }
+        System.out.println(carDatabase);
     }
 
 

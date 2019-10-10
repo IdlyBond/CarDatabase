@@ -22,7 +22,8 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
+        if (out.isEmpty()) throw new CarNotFoundException("Vin: " + var);
+        return out;
     }
 
     Set<Car> reg(String var) throws CarNotFoundException {
@@ -33,7 +34,8 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
+        if (out.isEmpty()) throw new CarNotFoundException("Reg: " + var);
+        return out;
     }
 
     Set<Car> model(String var) throws CarNotFoundException {
@@ -44,7 +46,8 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
+        if (out.isEmpty()) throw new CarNotFoundException("Model: " + var);
+        return out;
     }
 
     Set<Car> price(Integer from, Integer to) throws CarNotFoundException {
@@ -56,7 +59,8 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
+        if (out.isEmpty()) throw new CarNotFoundException("Price: " + from + "-" + to);
+        return out;
     }
 
     Set<Car> path(Integer from, Integer to) throws CarNotFoundException {
@@ -68,7 +72,8 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
+        if (out.isEmpty()) throw new CarNotFoundException("Path: " + from + "-" + to);
+        return out;
     }
 
     Set<Car> year(Integer from, Integer to) throws CarNotFoundException {
@@ -80,11 +85,7 @@ class Searcher {
                 out.add(car);
             }
         });
-        return checkOut(out);
-    }
-
-    private static Set<Car> checkOut(Set<Car> out) throws CarNotFoundException {
-        if (out.isEmpty()) throw new CarNotFoundException();
+        if (out.isEmpty()) throw new CarNotFoundException("Year: " + from + "-" + to);
         return out;
     }
 

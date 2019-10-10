@@ -25,33 +25,33 @@ public class Car {
         setPrice(price);
     }
 
-    public void setVinCode(final String vinCode) {
-        if (!Checker.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin");
+    void setVinCode(final String vinCode) {
+        if (!Checker.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin: " + vinCode);
         this.vinCode = vinCode;
     }
 
-    public void setRegNumber(final String regNumber) {
-        if (!Checker.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg");
+    void setRegNumber(final String regNumber) {
+        if (!Checker.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg: " + regNumber);
         this.regNumber = regNumber;
     }
 
-    public void setModel(final String model) {
-        if (!Checker.checkModel(model)) throw new IllegalArgumentException("Illegal Model");
+    void setModel(final String model) {
+        if (!Checker.checkModel(model)) throw new IllegalArgumentException("Illegal Model: " + model);
         this.model = model;
     }
 
-    public void setPath(final int path) {
-        if (!Checker.checkPath(path)) throw new IllegalArgumentException("Illegal Path");
+    void setPath(final int path) {
+        if (!Checker.checkPath(path)) throw new IllegalArgumentException("Illegal Path: " + path);
         this.path = path;
     }
 
-    public void setYear(final int year) {
-        if (!Checker.checkYear(year)) throw new IllegalArgumentException("Illegal Year");
+    void setYear(final int year) {
+        if (!Checker.checkYear(year)) throw new IllegalArgumentException("Illegal Year: " + year);
         this.year = year;
     }
 
-    public void setPrice(final int price) {
-        if (!Checker.checkPrice(price)) throw new IllegalArgumentException("Illegal Price");
+    void setPrice(final int price) {
+        if (!Checker.checkPrice(price)) throw new IllegalArgumentException("Illegal Price: " + price);
         this.price = price;
     }
 
