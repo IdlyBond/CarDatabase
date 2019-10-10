@@ -2,9 +2,7 @@ package mechanics.processor;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import mechanics.exceptions.InvalidInputException;
 import utillities.Checker;
-import constants.Fields;
 
 
 @Getter
@@ -18,7 +16,7 @@ public class Car {
     private int year;
     private int price;
 
-    protected Car(String vinCode, String regNumber, String model, int path, int year, int price) {
+    Car(String vinCode, String regNumber, String model, int path, int year, int price) {
         setVinCode(vinCode);
         setRegNumber(regNumber);
         setModel(model);
@@ -27,39 +25,39 @@ public class Car {
         setPrice(price);
     }
 
-    protected void setVinCode(final String vinCode){
-        if (!Checker.checkVinCode(vinCode)) throw new InvalidInputException(Fields.VIN_CODE);
+    public void setVinCode(final String vinCode) {
+        if (!Checker.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin");
         this.vinCode = vinCode;
     }
 
-    protected void setRegNumber(final String regNumber) {
-        if (!Checker.checkRegNumber(regNumber)) throw new InvalidInputException(Fields.REG_NUM);
+    public void setRegNumber(final String regNumber) {
+        if (!Checker.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg");
         this.regNumber = regNumber;
     }
 
-    protected void setModel(final String model) {
-        if (!Checker.checkModel(model)) throw new InvalidInputException(Fields.MODEL);
+    public void setModel(final String model) {
+        if (!Checker.checkModel(model)) throw new IllegalArgumentException("Illegal Model");
         this.model = model;
     }
 
-    protected void setPath(final int path) {
-        if (!Checker.checkPath(path)) throw new InvalidInputException(Fields.PATH);
+    public void setPath(final int path) {
+        if (!Checker.checkPath(path)) throw new IllegalArgumentException("Illegal Path");
         this.path = path;
     }
 
-    protected void setYear(final int year) {
-        if (!Checker.checkYear(year)) throw new InvalidInputException(Fields.YEAR);
+    public void setYear(final int year) {
+        if (!Checker.checkYear(year)) throw new IllegalArgumentException("Illegal Year");
         this.year = year;
     }
 
-    protected void setPrice(final int price) {
-        if (!Checker.checkPrice(price)) throw new InvalidInputException(Fields.PRICE);
+    public void setPrice(final int price) {
+        if (!Checker.checkPrice(price)) throw new IllegalArgumentException("Illegal Price");
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return  "VIN: " + vinCode + '\n' +
+        return "VIN: " + vinCode + '\n' +
                 "REG: " + regNumber + '\n' +
                 "Model: " + model + '\n' +
                 "Path: " + path + '\n' +

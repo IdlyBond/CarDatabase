@@ -1,4 +1,4 @@
-package constants;
+package gui;
 
 public enum Lines {
     NON_CORRECT("* Некорректный ввод. "),
@@ -10,11 +10,11 @@ public enum Lines {
             "5 - Год выпуска.\n" +
             "6 - Цена.\n" +
             "7 - Все параметры.\n"),
-    CHOOSE_LINE ("* Выберите один из пунктов меню:"),
-    MAIN_OPTIONS_LINE ("1 - Меню поиска.\n" +
+    CHOOSE_LINE("* Выберите один из пунктов меню:"),
+    MAIN_OPTIONS_LINE("1 - Меню поиска.\n" +
             "2 - Занести в базу данные по новой машине.\n" +
             "3 - Редактирование информации о машине по VIN коду\n" +
-            "4 - Удалить машину с базы по VIN коду.\n" +
+            "4 - Меню удаления.\n" +
             "0 - Назад\n" +
             "-1 - Выход из программы."),
     SEARCH_OPTIONS_LINE(" 1 - Поиск по VIN коду машины.\n" +
@@ -25,6 +25,14 @@ public enum Lines {
             " 6 - Поиск по цене.\n" +
             " 7 - Отобразить список всех машин \n" +
             " 0 - назад."),
+    DELETE_OPTIONS_LINE(" 1 - Удалить по VIN коду машины.\n" +
+            " 2 - Удалить по регистрационному номеру машины.\n" +
+            " 3 - Удалить по модели.\n" +
+            " 4 - Удалить по пробегу.\n" +
+            " 5 - Удалить по году выпуска.\n" +
+            " 6 - Удалить по цене.\n" +
+            " 7 - Форматировать базу данных \n" +
+            " 0 - назад."),
     CHANGE_OPTIONS_LINE(" 1 - Изменить VIN код машины.\n" +
             " 2 - Изменить регистрационный номер машины.\n" +
             " 3 - Изменить модель.\n" +
@@ -32,12 +40,17 @@ public enum Lines {
             " 5 - Изменить год выпуска.\n" +
             " 6 - Изменить цену.\n" +
             " 0 - назад."),
+    ARE_YOU_SURE_TO_DELETE("Вы уверены что хотите очистить базу данных? \n 1) ДА    0) НАЗАД"),
+    TYPE_DELETE_TO_DELETE("Введите \'УДАЛИТЬ\' для удаления"),
+    DELETE("УДАЛИТЬ"),
+    CARS_DELETED("Машины удалены"),
     ENTER_VIN_CODE("* Введите VIN код: "),
     ENTER_REG_NUMBER("* Введите регестрационный код: "),
     ENTER_MODEL("* Введите марку и модель: "),
     ENTER_PATH("* Введите пробег: "),
     ENTER_YEAR("* Введите год выпуска: "),
     ENTER_PRICE("* Введите цену: "),
+    ENTER_FROM_TO("Введите значение от и до: "),
     DEFAULT_VIN_1("HCBUZTH63KLC859BZ"),
     DEFAULT_VIN_2("5CBU54ZTH63KLC855"),
     DEFAULT_VIN_3("MZBU4GBC3KLC859BZ"),
@@ -50,10 +63,9 @@ public enum Lines {
     DEFAULT_MODEL_2("Wagen"),
     DEFAULT_MODEL_3("Porsche"),
     DEFAULT_MODEL_4("Lada"),
-    NO_CARS_FOUND("* В базе не существует такой машины. "),
+    NO_CARS_FOUND("* В базе не существует таких машин. "),
     FOUND_CAR("* Машина была найдена: "),
-    ZERO_TO_EXIT("* Для возврата в предыдущее меню введите цифру 0. ")
-    ;
+    ZERO_TO_EXIT("* Для возврата в предыдущее меню введите цифру 0. ");
 
     private String line;
 
@@ -61,7 +73,7 @@ public enum Lines {
         this.line = line;
     }
 
-    public String getLine(){
+    public String getLine() {
         return line;
     }
 
