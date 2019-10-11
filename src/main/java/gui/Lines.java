@@ -41,6 +41,8 @@ public enum Lines {
             " 6 - Изменить цену.\n" +
             " 7 - Изменить всё.\n" +
             " 0 - назад."),
+    CARS_WITH("Машин с"),
+    WAS_NOT_FOUND(" было найдено"),
     CHANGES_SUCCESS("Изменено успешно."),
     DELETE_SUCCESS("Удалено успешно."),
     ENTER_NEW_VALUE("Введите новое значение."),
