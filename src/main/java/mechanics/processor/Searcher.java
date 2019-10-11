@@ -14,39 +14,39 @@ class Searcher {
         this.carSet = carSet;
     }
 
-    Set<Car> vin(String var) throws CarNotFoundException {
-        if (!Checker.checkVinCode(var)) throw new IllegalArgumentException();
+    Set<Car> vin(String vin) throws CarNotFoundException {
+        if (!Checker.checkVinCode(vin)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
-            if (var.equals(car.getVinCode())) {
+            if (vin.equals(car.getVinCode())) {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Vin: " + var);
+        if (out.isEmpty()) throw new CarNotFoundException(vin);
         return out;
     }
 
-    Set<Car> reg(String var) throws CarNotFoundException {
-        if (!Checker.checkRegNumber(var)) throw new IllegalArgumentException();
+    Set<Car> reg(String reg) throws CarNotFoundException {
+        if (!Checker.checkRegNumber(reg)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
-            if (var.equals(car.getRegNumber())) {
+            if (reg.equals(car.getRegNumber())) {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Reg: " + var);
+        if (out.isEmpty()) throw new CarNotFoundException(reg);
         return out;
     }
 
-    Set<Car> model(String var) throws CarNotFoundException {
-        if (!Checker.checkModel(var)) throw new IllegalArgumentException();
+    Set<Car> model(String model) throws CarNotFoundException {
+        if (!Checker.checkModel(model)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
-            if (var.equals(car.getModel())) {
+            if (model.equals(car.getModel())) {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Model: " + var);
+        if (out.isEmpty()) throw new CarNotFoundException(model);
         return out;
     }
 
@@ -59,7 +59,7 @@ class Searcher {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Price: " + from + "-" + to);
+        if (out.isEmpty()) throw new CarNotFoundException(from + "-" + to);
         return out;
     }
 
@@ -72,7 +72,7 @@ class Searcher {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Path: " + from + "-" + to);
+        if (out.isEmpty()) throw new CarNotFoundException(from + "-" + to);
         return out;
     }
 
@@ -85,7 +85,7 @@ class Searcher {
                 out.add(car);
             }
         });
-        if (out.isEmpty()) throw new CarNotFoundException("Year: " + from + "-" + to);
+        if (out.isEmpty()) throw new CarNotFoundException(from + "-" + to);
         return out;
     }
 

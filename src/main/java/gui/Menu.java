@@ -228,7 +228,7 @@ public class Menu {
         try {
             findGUI.findByVin().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("Машин с VIN " + e.getField() + " не было найдено");
         }
     }
 
@@ -236,7 +236,7 @@ public class Menu {
         try {
             findGUI.findByReg().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("Машин с REG " + e.getField() + " не было найдено");
         }
     }
 
@@ -244,7 +244,7 @@ public class Menu {
         try {
             findGUI.findByModel().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("Машин с моделью " + e.getField() + " не было найдено");
         }
     }
 
@@ -252,7 +252,7 @@ public class Menu {
         try {
             findGUI.findByPrice().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
@@ -260,7 +260,7 @@ public class Menu {
         try {
             findGUI.findByPath().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
@@ -268,7 +268,7 @@ public class Menu {
         try {
             findGUI.findByYear().forEach(System.out::println);
         } catch (CarNotFoundException e) {
-            System.out.println(Lines.NO_CARS_FOUND);
+            System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
