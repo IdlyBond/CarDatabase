@@ -1,10 +1,10 @@
 package gui;
 
+import carUtils.CarUtils;
 import gui.input.EnterFields;
 import mechanics.exceptions.CarNotFoundException;
 import mechanics.processor.Car;
 import mechanics.processor.CarDatabase;
-import utillities.Checker;
 
 import java.util.Set;
 
@@ -36,7 +36,7 @@ class FindGUI {
             System.out.println(Lines.ENTER_FROM_TO);
             from = enter.price();
             to = enter.price();
-            if (Checker.isLess(from, to)) {
+            if (CarUtils.isLess(from, to)) {
                 System.out.println(Lines.NON_CORRECT);
             } else break;
         }

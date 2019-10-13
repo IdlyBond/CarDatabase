@@ -1,8 +1,8 @@
 package mechanics.processor;
 
+import carUtils.CarUtils;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import utillities.Checker;
 
 
 @Getter
@@ -23,35 +23,36 @@ public class Car {
         setPath(path);
         setYear(year);
         setPrice(price);
+
     }
 
     void setVinCode(final String vinCode) {
-        if (!Checker.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin: " + vinCode);
+        if (!CarUtils.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin: " + vinCode);
         this.vinCode = vinCode;
     }
 
     void setRegNumber(final String regNumber) {
-        if (!Checker.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg: " + regNumber);
+        if (!CarUtils.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg: " + regNumber);
         this.regNumber = regNumber;
     }
 
     void setModel(final String model) {
-        if (!Checker.checkModel(model)) throw new IllegalArgumentException("Illegal Model: " + model);
+        if (!CarUtils.checkModel(model)) throw new IllegalArgumentException("Illegal Model: " + model);
         this.model = model;
     }
 
     void setPath(final int path) {
-        if (!Checker.checkPath(path)) throw new IllegalArgumentException("Illegal Path: " + path);
+        if (!CarUtils.checkPath(path)) throw new IllegalArgumentException("Illegal Path: " + path);
         this.path = path;
     }
 
     void setYear(final int year) {
-        if (!Checker.checkYear(year)) throw new IllegalArgumentException("Illegal Year: " + year);
+        if (!CarUtils.checkYear(year)) throw new IllegalArgumentException("Illegal Year: " + year);
         this.year = year;
     }
 
     void setPrice(final int price) {
-        if (!Checker.checkPrice(price)) throw new IllegalArgumentException("Illegal Price: " + price);
+        if (!CarUtils.checkPrice(price)) throw new IllegalArgumentException("Illegal Price: " + price);
         this.price = price;
     }
 

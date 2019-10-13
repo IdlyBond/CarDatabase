@@ -1,6 +1,6 @@
 package mechanics.processor;
 
-import utillities.Checker;
+import carUtils.CarUtils;
 
 import java.util.Set;
 
@@ -25,17 +25,17 @@ class Remover {
     }
 
     void removeByPrice(final int from, final int to) {
-        if (Checker.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
+        if (CarUtils.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
         carSet.removeIf(v -> v.getPrice() >= from && v.getPrice() <= to);
     }
 
     void removeByPath(final int from, final int to) {
-        if (Checker.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
+        if (CarUtils.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
         carSet.removeIf(v -> v.getPath() >= from && v.getPath() <= to);
     }
 
     void removeByYear(final int from, final int to) {
-        if (Checker.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
+        if (CarUtils.isLess(from, to)) throw new IllegalArgumentException(from + " < " + to);
         carSet.removeIf(v -> v.getYear() >= from && v.getYear() <= to);
     }
 }

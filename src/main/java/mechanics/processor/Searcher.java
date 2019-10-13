@@ -1,7 +1,7 @@
 package mechanics.processor;
 
+import carUtils.CarUtils;
 import mechanics.exceptions.CarNotFoundException;
-import utillities.Checker;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ class Searcher {
     }
 
     Set<Car> vin(String vin) throws CarNotFoundException {
-        if (!Checker.checkVinCode(vin)) throw new IllegalArgumentException();
+        if (!CarUtils.checkVinCode(vin)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
             if (vin.equals(car.getVinCode())) {
@@ -27,7 +27,7 @@ class Searcher {
     }
 
     Set<Car> reg(String reg) throws CarNotFoundException {
-        if (!Checker.checkRegNumber(reg)) throw new IllegalArgumentException();
+        if (!CarUtils.checkRegNumber(reg)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
             if (reg.equals(car.getRegNumber())) {
@@ -39,7 +39,7 @@ class Searcher {
     }
 
     Set<Car> model(String model) throws CarNotFoundException {
-        if (!Checker.checkModel(model)) throw new IllegalArgumentException();
+        if (!CarUtils.checkModel(model)) throw new IllegalArgumentException();
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
             if (model.equals(car.getModel())) {
@@ -51,7 +51,7 @@ class Searcher {
     }
 
     Set<Car> price(Integer from, Integer to) throws CarNotFoundException {
-        if (!Checker.checkPrice(from) || !Checker.checkPrice(to) || (from > to))
+        if (!CarUtils.checkPrice(from) || !CarUtils.checkPrice(to) || (from > to))
             throw new IllegalArgumentException("Illegal Price");
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
@@ -64,7 +64,7 @@ class Searcher {
     }
 
     Set<Car> path(Integer from, Integer to) throws CarNotFoundException {
-        if (!Checker.checkPath(from) || !Checker.checkPath(to) || (from > to))
+        if (!CarUtils.checkPath(from) || !CarUtils.checkPath(to) || (from > to))
             throw new IllegalArgumentException("Illegal Path");
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {
@@ -77,7 +77,7 @@ class Searcher {
     }
 
     Set<Car> year(Integer from, Integer to) throws CarNotFoundException {
-        if (!Checker.checkYear(from) || !Checker.checkYear(to) || (from > to))
+        if (!CarUtils.checkYear(from) || !CarUtils.checkYear(to) || (from > to))
             throw new IllegalArgumentException("Illegal Year");
         Set<Car> out = new HashSet<>();
         carSet.forEach(car -> {

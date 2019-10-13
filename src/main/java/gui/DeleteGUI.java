@@ -1,8 +1,8 @@
 package gui;
 
+import carUtils.CarUtils;
 import gui.input.EnterFields;
 import mechanics.processor.CarDatabase;
-import utillities.Checker;
 
 class DeleteGUI {
 
@@ -32,7 +32,7 @@ class DeleteGUI {
         while (true) {
             from = enter.price();
             to = enter.price();
-            if (!Checker.isLess(from, to)) break;
+            if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
         carDatabase.removeByPrice(from, to);
@@ -44,7 +44,7 @@ class DeleteGUI {
         while (true) {
             from = enter.path();
             to = enter.path();
-            if (!Checker.isLess(from, to)) break;
+            if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
         carDatabase.removeByPath(from, to);
@@ -56,7 +56,7 @@ class DeleteGUI {
         while (true) {
             from = enter.year();
             to = enter.year();
-            if (!Checker.isLess(from, to)) break;
+            if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
         carDatabase.removeByYear(from, to);

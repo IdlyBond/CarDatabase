@@ -12,6 +12,7 @@ public class Main {
         carDatabase.add(Lines.DEFAULT_VIN_4.getLine(), Lines.DEFAULT_REG_NUM_4.getLine(), Lines.DEFAULT_MODEL_4.getLine(), 50, 2019, 3000);
         Menu menu = new Menu(carDatabase);
         menu.mainMenu();
+
     }
 
 }
