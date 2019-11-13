@@ -1,32 +1,48 @@
 package gui;
 
-import carUtils.CarUtils;
 import gui.input.EnterFields;
-import mechanics.processor.CarDatabase;
+import mechanics.exceptions.CarNotFoundException;
+import mechanics.facade.CarDatabase;
+import mechanics.facade.Database;
+import utils.CarUtils;
 
-class DeleteGUI {
+import static mechanics.facade.DataTypes.*;
 
-    private CarDatabase carDatabase;
+public class DeleteGUI {
+
+    private Database database;
     private EnterFields enter;
 
-    DeleteGUI(CarDatabase carDatabase, EnterFields enter) {
-        this.carDatabase = carDatabase;
+    public DeleteGUI(EnterFields enter) {
+        this.database = CarDatabase.getInstance();
         this.enter = enter;
     }
 
-    void deleteByVin() {
-        carDatabase.removeByVin(enter.vin());
+    public void deleteByVin() {
+        try {
+            database.delete(enter.vin(), VIN);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteByReg() {
-        carDatabase.removeByReg(enter.reg());
+    public void deleteByReg() {
+        try {
+        database.delete(enter.reg(), REG);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteByModel() {
-        carDatabase.removeByModel(enter.model());
+    public void deleteByModel() {
+        try {
+        database.delete(enter.model(), MODEL);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteByPrice() {
+    public void deleteByPrice() {
         int from;
         int to;
         while (true) {
@@ -35,10 +51,14 @@ class DeleteGUI {
             if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
-        carDatabase.removeByPrice(from, to);
+        try {
+        database.delete(from, to, PRICE);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteByPath() {
+    public void deleteByPath() {
         int from;
         int to;
         while (true) {
@@ -47,10 +67,14 @@ class DeleteGUI {
             if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
-        carDatabase.removeByPath(from, to);
+        try {
+        database.delete(from, to, PRICE);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteByYear() {
+    public void deleteByYear() {
         int from;
         int to;
         while (true) {
@@ -59,11 +83,19 @@ class DeleteGUI {
             if (!CarUtils.isLess(from, to)) break;
             System.out.println(Lines.NON_CORRECT);
         }
-        carDatabase.removeByYear(from, to);
+        try {
+        database.delete(from, to, YEAR);
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
-    void deleteAll() {
-        carDatabase.removeAll();
+    public void deleteAll() {
+        try {
+        database.delete();
+        } catch (CarNotFoundException e) {
+            System.out.println(Lines.NO_CARS_FOUND);
+        }
     }
 
 }

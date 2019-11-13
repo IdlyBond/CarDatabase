@@ -1,13 +1,17 @@
-package mechanics.processor;
+package mechanics.processor.cars;
 
-import carUtils.CarUtils;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import utils.CarUtils;
+
+import java.io.Serializable;
 
 
 @Getter
 @EqualsAndHashCode
-public class Car {
+public class Car implements Serializable {
+
 
     private String vinCode;
     private String regNumber;
@@ -16,42 +20,41 @@ public class Car {
     private int year;
     private int price;
 
-    Car(String vinCode, String regNumber, String model, int path, int year, int price) {
+    public Car(@JsonProperty("vin") String vinCode, @JsonProperty("reg") String regNumber, @JsonProperty("model") String model, @JsonProperty("path") int path, @JsonProperty("year") int year, @JsonProperty("price") int price) {
         setVinCode(vinCode);
         setRegNumber(regNumber);
         setModel(model);
         setPath(path);
         setYear(year);
         setPrice(price);
-
     }
 
-    void setVinCode(final String vinCode) {
+    public void setVinCode(final String vinCode) {
         if (!CarUtils.checkVinCode(vinCode)) throw new IllegalArgumentException("Illegal Vin: " + vinCode);
         this.vinCode = vinCode;
     }
 
-    void setRegNumber(final String regNumber) {
+    public void setRegNumber(final String regNumber) {
         if (!CarUtils.checkRegNumber(regNumber)) throw new IllegalArgumentException("Illegal Reg: " + regNumber);
         this.regNumber = regNumber;
     }
 
-    void setModel(final String model) {
+    public void setModel(final String model) {
         if (!CarUtils.checkModel(model)) throw new IllegalArgumentException("Illegal Model: " + model);
         this.model = model;
     }
 
-    void setPath(final int path) {
+    public void setPath(final int path) {
         if (!CarUtils.checkPath(path)) throw new IllegalArgumentException("Illegal Path: " + path);
         this.path = path;
     }
 
-    void setYear(final int year) {
+    public void setYear(final int year) {
         if (!CarUtils.checkYear(year)) throw new IllegalArgumentException("Illegal Year: " + year);
         this.year = year;
     }
 
-    void setPrice(final int price) {
+    public void setPrice(final int price) {
         if (!CarUtils.checkPrice(price)) throw new IllegalArgumentException("Illegal Price: " + price);
         this.price = price;
     }

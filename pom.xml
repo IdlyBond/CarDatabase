@@ -6,6 +6,7 @@
 
     <groupId>idlyb.hillel.cars</groupId>
     <artifactId>CarDatabase</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
 
     <properties>
@@ -16,12 +17,6 @@
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>idlyb.hillel.cars</groupId>
-            <artifactId>carUtils</artifactId>
-            <version>1.0</version>
-        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -36,6 +31,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
 
     </dependencies>
 

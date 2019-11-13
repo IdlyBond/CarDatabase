@@ -1,7 +1,7 @@
 package gui.input;
 
-import carUtils.CarUtils;
 import gui.Lines;
+import utils.CarUtils;
 
 public class EnterFields {
     private Printer print;

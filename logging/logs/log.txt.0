@@ -1,0 +1,8 @@
+нояб. 13, 2019 9:37:23 PM mechanics.facade.CarDatabase select
+INFO: Try to select all cars
+нояб. 13, 2019 9:37:35 PM mechanics.facade.CarDatabase select
+INFO: Try to find car with {0} {1]...
+нояб. 13, 2019 9:37:43 PM mechanics.facade.CarDatabase select
+INFO: Try to find car with {0} {1]...
+нояб. 13, 2019 9:37:43 PM mechanics.facade.CarDatabase select
+INFO: Car with {0} {1] was not found

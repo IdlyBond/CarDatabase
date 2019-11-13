@@ -3,33 +3,28 @@ package gui;
 import gui.input.EnterFields;
 import gui.input.Printer;
 import mechanics.exceptions.CarNotFoundException;
-import mechanics.processor.CarDatabase;
+import mechanics.facade.CarDatabase;
+import mechanics.facade.Database;
+import mechanics.processor.CRUD;
+import mechanics.processor.CarCRUD;
 
 
 public class Menu {
 
-    private CarDatabase carDatabase;
+    private Database carCRUD;
     private Printer print;
     private EnterFields enter;
     private FindGUI findGUI;
     private DeleteGUI deleteGUI;
     private ChangerGUI changerGUI;
 
-    public Menu(CarDatabase carDatabase) {
-        this.carDatabase = carDatabase;
-        this.print = new Printer();
-        this.enter = new EnterFields(print);
-        this.findGUI = new FindGUI(carDatabase, enter);
-        this.deleteGUI = new DeleteGUI(carDatabase, enter);
-        this.changerGUI = new ChangerGUI(carDatabase, enter, findGUI);
-    }
-
     public Menu() {
-        this.carDatabase = new CarDatabase();
+        this.carCRUD = CarDatabase.getInstance();
         this.print = new Printer();
         this.enter = new EnterFields(print);
-        this.findGUI = new FindGUI(carDatabase, enter);
-        this.deleteGUI = new DeleteGUI(carDatabase, enter);
+        this.findGUI = new FindGUI(enter);
+        this.deleteGUI = new DeleteGUI(enter);
+        this.changerGUI = new ChangerGUI(enter, findGUI);
     }
 
     public void mainMenu() {
@@ -154,7 +149,7 @@ public class Menu {
     }
 
     private void add() {
-        carDatabase.add(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
+        carCRUD.insert(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
     }
 
     private void deleteByVin() {
@@ -273,11 +268,11 @@ public class Menu {
     }
 
     private void printCars() {
-        if (carDatabase.isEmpty()) {
+        try {
+            System.out.println(carCRUD.select());
+        } catch (CarNotFoundException e) {
             System.out.println(Lines.NO_CARS_FOUND);
-            return;
         }
-        System.out.println(carDatabase);
     }
 
 

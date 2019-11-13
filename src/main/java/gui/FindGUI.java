@@ -1,36 +1,39 @@
 package gui;
 
-import carUtils.CarUtils;
 import gui.input.EnterFields;
 import mechanics.exceptions.CarNotFoundException;
-import mechanics.processor.Car;
-import mechanics.processor.CarDatabase;
+import mechanics.facade.CarDatabase;
+import mechanics.facade.Database;
+import mechanics.processor.cars.Car;
+import utils.CarUtils;
 
-import java.util.Set;
+import java.util.Collection;
 
-class FindGUI {
+import static mechanics.facade.DataTypes.*;
 
-    private CarDatabase carDatabase;
+public class FindGUI {
+
+    private Database database;
     private EnterFields enter;
 
-    FindGUI(CarDatabase carDatabase, EnterFields enter) {
-        this.carDatabase = carDatabase;
+    public FindGUI(EnterFields enter) {
+        this.database = CarDatabase.getInstance();
         this.enter = enter;
     }
 
-    Set<Car> findByVin() throws CarNotFoundException {
-        return carDatabase.searchByVin(enter.vin());
+    public Collection<Car> findByVin() throws CarNotFoundException {
+        return database.select(enter.vin(), VIN);
     }
 
-    Set<Car> findByReg() throws CarNotFoundException {
-        return carDatabase.searchByReg(enter.reg());
+    public Collection<Car> findByReg() throws CarNotFoundException {
+        return database.select(enter.reg(), REG);
     }
 
-    Set<Car> findByModel() throws CarNotFoundException {
-        return carDatabase.searchByModel(enter.model());
+    public Collection<Car> findByModel() throws CarNotFoundException {
+        return database.select(enter.model(), MODEL);
     }
 
-    Set<Car> findByPrice() throws CarNotFoundException {
+    public Collection<Car> findByPrice() throws CarNotFoundException {
         int from, to;
         while (true) {
             System.out.println(Lines.ENTER_FROM_TO);
@@ -40,10 +43,10 @@ class FindGUI {
                 System.out.println(Lines.NON_CORRECT);
             } else break;
         }
-        return carDatabase.searchByPrice(from, to);
+        return database.select(from, to, PRICE);
     }
 
-    Set<Car> findByPath() throws CarNotFoundException {
+    public Collection<Car> findByPath() throws CarNotFoundException {
         int from, to;
         while (true) {
             System.out.println(Lines.ENTER_FROM_TO);
@@ -53,10 +56,10 @@ class FindGUI {
                 System.out.println(Lines.NON_CORRECT);
             } else break;
         }
-        return carDatabase.searchByPath(from, to);
+        return database.select(from, to, PATH);
     }
 
-    Set<Car> findByYear() throws CarNotFoundException {
+    public Collection<Car> findByYear() throws CarNotFoundException {
         int from, to;
         while (true) {
             System.out.println(Lines.ENTER_FROM_TO);
@@ -66,6 +69,6 @@ class FindGUI {
                 System.out.println(Lines.NON_CORRECT);
             } else break;
         }
-        return carDatabase.searchByYear(from, to);
+        return database.select(from, to, YEAR);
     }
 }

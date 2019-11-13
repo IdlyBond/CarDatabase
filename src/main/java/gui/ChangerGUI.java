@@ -2,102 +2,105 @@ package gui;
 
 import gui.input.EnterFields;
 import mechanics.exceptions.CarNotFoundException;
-import mechanics.processor.Car;
-import mechanics.processor.CarDatabase;
+import mechanics.facade.CarDatabase;
+import mechanics.facade.Database;
+import mechanics.processor.cars.Car;
 
-class ChangerGUI {
+import static mechanics.facade.DataTypes.*;
 
-    private CarDatabase carDatabase;
+public class ChangerGUI {
+
+    private Database database;
     private EnterFields enter;
     private FindGUI findGUI;
 
-    ChangerGUI(CarDatabase carDatabase, EnterFields enter, FindGUI findGUI) {
-        this.carDatabase = carDatabase;
+    public ChangerGUI(EnterFields enter, FindGUI findGUI) {
+        this.database = CarDatabase.getInstance();
         this.enter = enter;
         this.findGUI = findGUI;
     }
 
-    void changeVin(){
+    public void changeVin(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeVin(enter.vin(), car);
+            database.update(enter.vin(), car, VIN);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("Машин с VIN " + e.getField() + " не было найдено");
         }
     }
 
-    void changeReg(){
+    public void changeReg(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeReg(enter.reg(), car);
+            database.update(enter.reg(), car, REG);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("Машин с REG " + e.getField() + " не было найдено");
         }
     }
 
-    void changeModel(){
+    public void changeModel(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeModel(enter.model(), car);
+            database.update(enter.model(), car, MODEL);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("Машин с моделью " + e.getField() + " не было найдено");
         }
     }
 
-    void changePrice(){
+    public void changePrice(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changePrice(enter.price(), car);
+            database.update(enter.price(), car, PRICE);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
-    void changePath(){
+    public void changePath(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changePath(enter.path(), car);
+            database.update(enter.path(), car, PATH);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
-    void changeYear(){
+    public void changeYear(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeYear(enter.year(), car);
+            database.update(enter.year(), car, YEAR);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println("В диапазне " + e.getField() + " машин нет");
         }
     }
 
-    void changeAll(){
+    public void changeAll(){
         try {
             Car car = findGUI.findByVin().iterator().next();
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeVin(enter.vin(), car);
+            database.update(enter.vin(), car, VIN);
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeReg(enter.reg(), car);
+            database.update(enter.reg(), car, REG);
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeModel(enter.model(), car);
+            database.update(enter.model(), car, MODEL);
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changePrice(enter.price(), car);
+            database.update(enter.price(), car, PRICE);
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changePath(enter.path(), car);
+            database.update(enter.path(), car, PATH);
             System.out.println(Lines.ENTER_NEW_VALUE);
-            carDatabase.changeYear(enter.year(), car);
+            database.update(enter.year(), car, YEAR);
             System.out.println(Lines.CHANGES_SUCCESS);
         } catch (CarNotFoundException e) {
             System.out.println(Lines.NO_CARS_FOUND);
