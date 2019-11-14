@@ -33,19 +33,19 @@ public class CarDatabase implements Database {
         try {
         switch (type) {
             case VIN:
-                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.toString(), value});
+                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.name(), value});
                 return crud.selectByVin(value);
             case REG:
-                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.toString(), value});
+                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.name(), value});
                 return crud.selectByReg(value);
             case MODEL:
-                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.toString(), value});
+                log.log(Level.INFO, "Try to find car with {0} {1}...", new String[]{type.name(), value});
                 return crud.selectByModel(value);
             default:
                 throw new IllegalArgumentException("Type must be VIN, REG or MODEL, your is " + type);
         }
         } catch (CarNotFoundException e) {
-            log.log(Level.INFO, "Car with {0} {1} was not found", new String[]{type.toString(), value});
+            log.log(Level.INFO, "Car with {0} {1} was not found", new String[]{type.name(), value});
             throw e;
         }
     }
@@ -57,22 +57,22 @@ public class CarDatabase implements Database {
             switch (type) {
                 case PRICE:
                     log.log(Level.INFO, "Try to find car with {0} from {1} to {2}...",
-                            new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                            new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                     return crud.selectByPrice(from, to);
                 case PATH:
                     log.log(Level.INFO, "Try to find car with {0} from {1} to {2}...",
-                            new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                            new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                     return crud.selectByPath(from, to);
                 case YEAR:
                     log.log(Level.INFO, "Try to find car with {0} from {1} to {2}...",
-                            new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                            new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                     return crud.selectByYear(from, to);
                 default:
                     throw new IllegalArgumentException("Type must be PRICE, PATH or YEAR, your is " + type);
             }
         } catch (CarNotFoundException e) {
             log.log(Level.INFO, "Car with {0} from {1} to {2} was not found",
-                    new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                    new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
             throw e;
         }
     }
@@ -89,7 +89,7 @@ public class CarDatabase implements Database {
     }
 
     @Override
-    public void insert(String vinCode, String regNumber, String model, int path, int year, int price) {
+    public void update(String vinCode, String regNumber, String model, int path, int year, int price) {
         crud.insert(vinCode, regNumber, model, path, year, price);
         log.log(Level.INFO, "Car with vin {0}, reg {1}, model {2}, path {3}, year {4}, price {5} was added",
                 new String[] {vinCode, regNumber, model, String.valueOf(path), String.valueOf(year), String.valueOf(price)});
@@ -102,17 +102,17 @@ public class CarDatabase implements Database {
         switch (type) {
             case VIN:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getVinCode(), value});
+                        new String[]{type.name(), car.getVinCode(), car.getVinCode(), value});
                 crud.changeVin(value, car);
                 break;
             case REG:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getRegNumber(), value});
+                        new String[]{type.name(), car.getVinCode(), car.getRegNumber(), value});
                 crud.changeReg(value, car);
                 break;
             case MODEL:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getModel(), value});
+                        new String[]{type.name(), car.getVinCode(), car.getModel(), value});
                 crud.changeModel(value, car);
                 break;
             default:
@@ -126,17 +126,17 @@ public class CarDatabase implements Database {
         switch (type) {
             case PRICE:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
+                        new String[]{type.name(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
                 crud.changePrice(value, car);
                 break;
             case PATH:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
+                        new String[]{type.name(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
                 crud.changePath(value, car);
                 break;
             case YEAR:
                 log.log(Level.INFO, "Try to change {0} of car with VIN {1} from {2} to {3}...",
-                        new String[]{type.toString(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
+                        new String[]{type.name(), car.getVinCode(), car.getVinCode(), String.valueOf(value)});
                 crud.changeYear(value, car);
                 break;
             default:
@@ -151,17 +151,17 @@ public class CarDatabase implements Database {
             switch (type) {
                 case VIN:
                     log.log(Level.INFO, "Try to remove car with {0} {1}...",
-                            new String[]{type.toString(), value});
+                            new String[]{type.name(), value});
                     crud.removeByVin(value);
                     break;
                 case REG:
                     log.log(Level.INFO, "Try to remove car with {0} {1}...",
-                            new String[]{type.toString(), value});
+                            new String[]{type.name(), value});
                     crud.removeByReg(value);
                     break;
                 case MODEL:
                     log.log(Level.INFO, "Try to remove car with {0} {1}...",
-                            new String[]{type.toString(), value});
+                            new String[]{type.name(), value});
                     crud.removeByModel(value);
                     break;
                 default:
@@ -169,7 +169,7 @@ public class CarDatabase implements Database {
             }
         } catch (CarNotFoundException e) {
             log.log(Level.INFO, "Car with {0} {1} has no been deleted because it does not exist",
-                    new String[]{type.toString(), value});
+                    new String[]{type.name(), value});
             throw e;
         }
     }
@@ -181,17 +181,17 @@ public class CarDatabase implements Database {
         switch (type) {
             case PRICE:
                 log.log(Level.INFO, "Try to remove car with {0} from {1} to {2}...",
-                        new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                        new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                 crud.removeByPrice(from, to);
                 break;
             case PATH:
                 log.log(Level.INFO, "Try to remove car with {0} from {1} to {2}...",
-                        new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                        new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                 crud.removeByPath(from, to);
                 break;
             case YEAR:
                 log.log(Level.INFO, "Try to remove car with {0} from {1} to {2}...",
-                        new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                        new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
                 crud.removeByYear(from, to);
                 break;
             default:
@@ -199,7 +199,7 @@ public class CarDatabase implements Database {
         }
         } catch (CarNotFoundException e) {
             log.log(Level.INFO, "Car with {0} from {1} to {2} has no been deleted because it does not exist",
-                    new String[]{type.toString(), String.valueOf(from), String.valueOf(to)});
+                    new String[]{type.name(), String.valueOf(from), String.valueOf(to)});
             throw e;
         }
     }

@@ -1,4 +1,6 @@
 import mechanics.exceptions.CarNotFoundException;
+import mechanics.facade.CarDatabase;
+import mechanics.facade.Database;
 import mechanics.processor.cars.Car;
 import mechanics.processor.CarCRUD;
 import org.junit.Assert;
@@ -94,6 +96,7 @@ public class CoreTest {
     public void test_correct_add_to_database(){
         cars.insert("5CBU54ZTH63482647", "AA0000AA", "Camry", 100, LocalDate.now().getYear(), 1000);
         Assert.assertFalse(cars.isEmpty());
+        Database database = CarDatabase.getInstance();
     }
 
     @Test
