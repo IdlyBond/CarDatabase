@@ -5,6 +5,8 @@ import gui.input.Printer;
 import mechanics.exceptions.CarNotFoundException;
 import mechanics.facade.CarDatabase;
 import mechanics.facade.Database;
+import mechanics.processor.CRUD;
+import mechanics.processor.CarCRUD;
 
 
 public class Menu {
@@ -147,7 +149,7 @@ public class Menu {
     }
 
     private void add() {
-        carCRUD.update(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
+        carCRUD.insert(enter.vin(), enter.reg(), enter.model(), enter.path(), enter.year(), enter.price());
     }
 
     private void deleteByVin() {

@@ -152,7 +152,7 @@ public class CarCRUD implements CRUD, Serializable {
         return cars.isEmpty();
     }
 
-    private CarCRUD() {
+    public CarCRUD() {
         cars = new HashSet<>();
         fileData = new InteractingCSV<>();
         selector = new Searcher(cars);
